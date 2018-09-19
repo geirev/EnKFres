@@ -1,0 +1,7 @@
+    deallocate(   DIMENS )
+    deallocate( KEYWORDS )
+    deallocate(     NUMS )
+    deallocate(  RESTART )
+    deallocate( STARTDAT )
+    deallocate(    UNITS )
+    deallocate(  WGNAMES )
