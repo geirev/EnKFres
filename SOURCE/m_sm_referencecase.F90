@@ -42,11 +42,10 @@ do
       jobid=submitrefcase(trim(pridir),trim(refdir))
 
    case('b')
-      print *
+      print *,'Xjobid=',jobid
       write(cjobid,'(i6)')jobid
       command(:)=' '
-      command='bjobs -a | grep '//cjobid
-!      command='bjobs -a | grep '//cjobid//' |  cut -c17-19 '
+      command='qstat '//cjobid
       print '(2a)','Executing command: ',trim(command)
       call system(trim(command))
 

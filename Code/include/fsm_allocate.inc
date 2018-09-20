@@ -1,0 +1,10 @@
+    allocate(   DIMENS(1) ); DIMENS   =1  
+    allocate( KEYWORDS(1) ); KEYWORDS ='AAAAAAAAAA'
+    allocate( MEASRMNT(1) ); MEASRMNT ='AAAAAAAAAA'
+    allocate(     NUMS(1) ); NUMS     =1  
+    allocate(  RESTART(1) ); RESTART  ='AAAAAAAAAA'
+    allocate( RUNTIMED(1) ); RUNTIMED =0.0
+    allocate( RUNTIMEI(1) ); RUNTIMEI =1  
+    allocate( STARTDAT(1) ); STARTDAT =1  
+    allocate(    UNITS(1) ); UNITS    ='AAAAAAAAAA'
+    allocate(  WGNAMES(1) ); WGNAMES  ='AAAAAAAAAA'

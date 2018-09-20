@@ -16,24 +16,18 @@ character(len=100) currentdir
 integer i,j,i1,i2
 logical ex
 integer jobid
+integer*4 istat
 
 character(len=3) cens
 
-call system('pwd > pwd.tmp')
-currentdir(:)=' '
-open(10,file='pwd.tmp')
-   read(10,'(a)')currentdir
-close(10)
-call system('rm -f pwd.tmp')
+istat=getcwd(currentdir); if (istat.ne.0) stop 'error in cwd'
 if (verbose) print *,'read current directory as: ',trim(currentdir)
 
    command(:)=' '
 if (trim(version) == 'hydro') then
-   command(:)=' '
 !   command='cd '//trim(ecldir)//' > /dev/null; '//&
 !          &'@eclipse < eclipse.in  2> /dev/null | grep "Job <" | cut -f2 -d"<" | cut -f1 -d">" > jobid.tmp'
 elseif (trim(version) == 'statoil') then
-   command(:)=' '
 !   command='eclrun -p eclipse -v 2004a_1 -s 150Mb -i '//trim(currentdir)//'/'//trim(ecldir)//&
 !          &'ECLIPSE.DATA -r i686Linux -q normal -n 1  2> /dev/null | grep "Job <" | cut -f2 -d"<" | cut -f1 -d">" > jobid.tmp'
 elseif (trim(version) == 'rogaland') then
@@ -50,7 +44,7 @@ elseif (trim(version) == 'rogaland') then
          write(10,'(a)')'#PBS -N job.tmp'
          write(10,'(a)')'#PBS -j oe'
          write(10,'(a)')'#PBS -q batch'
-         write(10,'(3a)')'python2.7 /opt/ert/share/bin/run_eclipse.py 2010.2 '//trim(eclbase)//' 1'
+         write(10,'(3a)')trim(eclrundir)//'run_eclipse.py 2010.2 '//trim(eclbase)
       close(10)
       write(*,'(a)',advance='no')'Do you want to edit the file submit.sh (y/n): '
       read(*,*)yn
@@ -66,16 +60,13 @@ elseif (trim(version) == 'rogaland') then
 
    command(:)=' '
    command='qsub -d "'//trim(currentdir)//'/'//trim(ecldir)//'" submit.sh > '//trim(ecldir)//'jobid.tmp'
-!!!  echo "2010.2\nECLIPSE\n\nf"  | /ecl/macros/@eclipse
-!!!  command='cd '//trim(ecldir)//' > /dev/null ; '//'@eclipse < eclipse.in  2> /dev/null | tail -1 | cut -c5-10 > jobid.tmp'
-!!#endif
 
 endif
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    if (verbose)   write(*,*)'Executing command: ',trim(command)
-   write(*,*)'Executing command: ',trim(command)
    call system(trim(command))
+!   write(*,*)'Executing command: ',trim(command)
 
    filename(:)=' '
    filename=trim(ecldir)//'jobid.tmp'

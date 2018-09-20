@@ -202,7 +202,8 @@ if (trim(version) == 'rogaland') then
          write(10,'(a)')'#PBS -N job.tmp'
          write(10,'(a)')'#PBS -j oe'
          write(10,'(a)')'#PBS -q batch'
-         write(10,'(3a)')'python2.7 /home/geve/Dropbox/ERT/ERTshared/bin/run_eclipse.py 2010.2 '//trim(eclbase)//' 1'
+!         write(10,'(3a)')'python2.7 /home/geve/Dropbox/ERT/ERTshared/bin/run_eclipse.py 2010.2 '//trim(eclbase)//' 1'
+         write(10,'(3a)')trim(eclrundir)//'run_eclipse.py 2010.2 '//trim(eclbase)
       close(10)
       write(*,'(a)',advance='no')'Do you want to edit the file submit.sh (y/n): '
       read(*,*)yn

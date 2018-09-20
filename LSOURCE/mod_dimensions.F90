@@ -1,14 +1,14 @@
 module mod_dimensions
 ! model grid dimensions
-   integer, parameter :: nrens=10            ! Number of ensemble members
-   integer, parameter :: nx=30                ! i-dimension of model grid
-   integer, parameter :: ny=30                ! j-dimension of model grid
-   integer, parameter :: nz=10                ! k-dimension of model grid
-   integer, parameter :: nw=2                 ! number of wells in model
-   integer, parameter :: nactive=82437        ! number of active gridcells.
+   integer, parameter :: nrens=20             ! Number of ensemble members
+   integer, parameter :: nx=40                ! i-dimension of model grid
+   integer, parameter :: ny=64                ! j-dimension of model grid
+   integer, parameter :: nz=14                ! k-dimension of model grid
+   integer, parameter :: nw=8                 ! number of wells in model
+   integer, parameter :: nactive=27755        ! number of active gridcells.
 
-   integer, parameter :: nrflts=45            ! Number of faults to estimate fault trans.
-   integer, parameter :: eqldims=7            ! Number of equil regions
+   integer, parameter :: nrflts=6             ! Number of faults to estimate fault trans.
+   integer, parameter :: eqldims=1            ! Number of equil regions
 
 #ifdef WELLSTATE
    integer, parameter :: nXGRP=10000          ! >= to max dimension of XGRP

@@ -2,22 +2,24 @@ module mod_localdefs
 use mod_dimensions
 
 character(len=80), parameter :: version='rogaland'     ! Special custimization for hydro, statoil and rogaland
-character(len=80), parameter :: eclbase='IN3'      ! Eclipse base name
+character(len=80), parameter :: eclbase='ECLIPSE'      ! Eclipse base name
 character(len=80), parameter :: ensbase='ensemble'     ! ensemble file base name
 
 logical            :: lfacies=.false.                  ! Set to true if the specific facies simulation is used.
 integer            :: nre=1                            ! Order of sampling scheme
 logical            :: logperm=.true.                   ! Logperm mode lognormal transformation on permeability.
 integer            :: initime=0                        ! Default starttime
-integer            :: fintime=310                      ! Default endtime
+integer            :: fintime=37                       ! Default endtime
 
-character(len=80), parameter :: refdir='Refcase/'       ! Path to directory for reference case
+character(len=80), parameter :: refpath='/home/geve/EnKFres/Reek/Run/Refcase/'       ! Path to directory for reference case
+character(len=80), parameter :: refdir='Refcase/'       ! local path to directory for reference case
 character(len=80), parameter :: pridir='Prior/'         ! Path to directory for priors
 
-character(len=80), parameter :: enkfdir='/home/geve/Progs/EnKFres/Run'
-character(len=80), parameter :: codedir='/home/geve/Progs/EnKFres/Code/EnKF'    
-character(len=80), parameter :: helpdir='/home/geve/Progs/EnKFres/Helps/'    
-character(len=80), parameter :: scriptdir='/home/geve/Progs/EnKFres/Scripts/'    
+character(len=80), parameter :: enkfdir='/home/geve/EnKFres/Reek/Run'
+character(len=80), parameter :: codedir='/home/geve/EnKFres/Reek/Code'    
+character(len=80), parameter :: helpdir='/home/geve//Dropbox/EnKFres/Helps/'    
+character(len=80), parameter :: scriptdir='/home/geve/Dropbox/EnKFres/Scripts/'    
+character(len=80), parameter :: eclrundir='/home/geve/Dropbox/EnKFres/bin/'    
 
 ! run menu defaults
 logical  :: spinup=.false.     ! Ensemble spinup from $initime to $fintime without stops.
